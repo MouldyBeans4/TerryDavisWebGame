@@ -21,7 +21,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Set up Emscripten
+      - name: Install Emscripten and build
         run: |
           git clone https://github.com/emscripten-core/emsdk.git
           cd emsdk
@@ -29,11 +29,6 @@ jobs:
           ./emsdk activate latest
           source ./emsdk_env.sh
           cd ..
-          echo "source emsdk/emsdk_env.sh" >> $GITHUB_ENV
-
-      - name: Build with make
-        run: |
-          source emsdk/emsdk_env.sh
           make
 
       - name: Upload to GitHub Pages
