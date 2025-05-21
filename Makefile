@@ -1,9 +1,10 @@
 all:
 	git clone https://github.com/raysan5/raylib.git
-	cd raylib && make PLATFORM=WEB
+	cd raylib && mkdir build && cd build && emcmake cmake .. -DBUILD_EXAMPLES=OFF -DPLATFORM=Web && make
+
 	emcc -o dist/index.html src/main.cpp \
 	  -O2 -Wall -std=c++11 \
-	  -Iraylib/src -Lraylib/src -lraylib \
+	  -Iraylib/src -Lraylib/build -lraylib \
 	  -s USE_GLFW=3 \
 	  -s ASYNCIFY \
 	  -s FORCE_FILESYSTEM=1 \
