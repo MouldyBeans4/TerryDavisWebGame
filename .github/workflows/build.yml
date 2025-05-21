@@ -36,7 +36,7 @@ jobs:
           source emsdk/emsdk_env.sh
           make
 
-      - name: Upload built site
+      - name: Upload to GitHub Pages
         uses: actions/upload-pages-artifact@v2
         with:
           path: ./dist
@@ -48,4 +48,3 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v2
-
