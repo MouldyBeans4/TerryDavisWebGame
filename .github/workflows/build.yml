@@ -1,8 +1,10 @@
 name: Build Raylib Game for Web
 
+
 on:
   push:
     branches: [ main ]
+    
 
 permissions:
   contents: read
@@ -20,6 +22,16 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+
+         - name: Set up Emscripten
+         run: |
+          git clone https://github.com/emscripten-core/emsdk.git
+          cd emsdk
+          ./emsdk install latest
+          ./emsdk activate latest
+          source ./emsdk_env.sh
+          cd ..
+
 
       - name: Install Emscripten and build
         run: |
