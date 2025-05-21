@@ -11,7 +11,7 @@ struct Player{
 
 
 };
-struct Balls {
+struct Balls {//balls lmao
     float x, y;
     float speed;
 };
